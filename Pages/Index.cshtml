@@ -1,0 +1,139 @@
+﻿@page
+@{
+    ViewData["Title"] = "Kevin Wanjala - Portfolio";
+}
+
+<!-- One-Page Layout Starts Here -->
+<div class="fixed-navbar text-center">
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+</div>
+
+<!-- Home Section -->
+<section id="home" class="visible" style="padding: 120px 20px 20px; text-align: center; background-color: #f4f4f4;">
+    <h2 style="font-size: 36px; margin-bottom: 20px;">Welcome to My Portfolio</h2>
+    <h1 class="display-3 font-weight-bold mb-4" style="color: #1E90FF;">Kevin Wanjala</h1>
+
+    <!-- Profile Image Section -->
+    <div class="profile-container mb-4">
+        <img 
+            src="https://scontent-fra3-1.xx.fbcdn.net/v/t39.30808-6/469470623_2400477493640458_5957568483344805226_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHVla25DPEM4SxlG1BWpHhfng0BFdeviXueDQEV16-Je-yiVcs27SUA-nWQvHG_bHtgwD7oOpEXVKV4GNl-MYd_&_nc_ohc=iJOGLc3bDWMQ7kNvgGda6OP&_nc_zt=23&_nc_ht=scontent-fra3-1.xx&_nc_gid=ALEZQNO-nxuqcqDAkU8Z8Ti&oh=00_AYBLtT0YaqdQfXBl5078nSKShdoV7Aex8qeo3SDbJo04ig&oe=676E03EB" 
+            alt="Profile of Kevin Wanjala" 
+            class="profile-image img-fluid rounded-circle"
+            style="max-width: 300px;"
+        />
+    </div>
+
+    <!-- Software Developer Title -->
+    <h2 class="display-4" style="color: #FF6347;">Software Developer</h2>
+
+    <!-- Plain Description Text -->
+    <p style="font-size: 1.2rem; line-height: 1.6; color: #333; font-weight: 300; margin-top: 20px; text-align: center;">
+        With passion for technology and a knack for solving complex problems, I specialize in creating innovative and efficient solutions. 
+        From building engaging front-end interfaces to developing robust back-end systems, I bring a holistic approach to software development. 
+        My commitment to continuous learning and problem-solving drives me to excel in delivering high-quality code and impactful results.
+    </p>
+
+    <!-- Call to Action Section -->
+    <p class="mt-4 font-italic" style="color: #1E90FF;">
+        Let's Connect!
+    </p>
+</section>
+
+<!-- About Section -->
+@await Html.PartialAsync("About")
+
+<!-- Education Section -->
+@await Html.PartialAsync("Education")
+
+<!-- Projects Section -->
+@await Html.PartialAsync("Projects")
+
+<!-- Skills Section -->
+@await Html.PartialAsync("Skills")
+
+<!-- Contact Section -->
+@await Html.PartialAsync("Contact")
+
+<!-- Add Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Function to detect when an element is in the viewport and add the "visible" class
+    function fadeInOutOnScroll() {
+        const elements = document.querySelectorAll('.fade-in');
+        elements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= window.innerHeight && rect.bottom >= window.innerHeight * 0.25) {
+                element.classList.add('visible');
+            } else {
+                element.classList.remove('visible');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', fadeInOutOnScroll);
+    window.addEventListener('load', fadeInOutOnScroll);
+</script>
+
+<style>
+    /* Navbar Styles */
+    .fixed-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #FFD700; /* Golden background */
+        padding: 15px 0;
+        z-index: 1000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .fixed-navbar a {
+        color: #333; /* Dark text for contrast */
+        margin: 0 15px;
+        text-decoration: none;
+        font-family: 'Poppins', sans-serif; /* Stylish font */
+        font-size: 16px;
+        font-weight: 500;
+        transition: all 0.3s ease; /* Smooth transitions */
+        padding: 10px 15px;
+        border-radius: 5px; /* Rounded hover effect */
+    }
+
+    .fixed-navbar a.active, 
+    .fixed-navbar a:hover {
+        background-color: #DAA520; /* Slightly darker golden */
+        color: #fff; /* White text on hover */
+        transform: scale(1.1); /* Zoom-in effect */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Hover shadow */
+    }
+
+    .fixed-navbar a:focus {
+        outline: none; /* Remove default focus outline */
+    }
+
+    /* Fade-in and fade-out effect */
+    .fade-in {
+        opacity: 0;
+        transition: opacity 4s ease-in-out;
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+    }
+
+    /* Ensure initial content is visible */
+    #home {
+        opacity: 1;
+    }
+
+    /* Add padding to body to avoid content hiding behind navbar */
+    body {
+        padding-top: 80px;
+    }
+</style>
