@@ -95,3 +95,4 @@
 /home/kevin/MyPortfolio/MyPortfolio/obj/Debug/net9.0/MyPortfolio.pdb
 /home/kevin/MyPortfolio/MyPortfolio/obj/Debug/net9.0/MyPortfolio.genruntimeconfig.cache
 /home/kevin/MyPortfolio/MyPortfolio/obj/Debug/net9.0/ref/MyPortfolio.dll
+/home/kevin/MyPortfolio/MyPortfolio/obj/Debug/net9.0/MyPortfolio.sourcelink.json

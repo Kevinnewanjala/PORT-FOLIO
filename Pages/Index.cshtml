@@ -5,12 +5,12 @@
 
 <!-- One-Page Layout Starts Here -->
 <div class="fixed-navbar text-center">
-    <a href="#home" class="active">Home</a>
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
+    <a href="#home" class="nav-button green">Home</a>
+    <a href="#about" class="nav-button blue">About</a>
+    <a href="#education" class="nav-button orange">Education</a>
+    <a href="#projects" class="nav-button green">Projects</a>
+    <a href="#skills" class="nav-button blue">Skills</a>
+    <a href="#contact" class="nav-button orange">Contact</a>
 </div>
 
 <!-- Home Section -->
@@ -87,34 +87,42 @@
         top: 0;
         left: 0;
         width: 100%;
-        background-color: #FFD700; /* Golden background */
+        background-color: transparent; /* Transparent background */
         padding: 15px 0;
         z-index: 1000;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .fixed-navbar a {
-        color: #333; /* Dark text for contrast */
-        margin: 0 15px;
         text-decoration: none;
-        font-family: 'Poppins', sans-serif; /* Stylish font */
+        font-family: 'Poppins', sans-serif;
         font-size: 16px;
-        font-weight: 500;
+        font-weight: bold; /* Bold text */
         transition: all 0.3s ease; /* Smooth transitions */
         padding: 10px 15px;
-        border-radius: 5px; /* Rounded hover effect */
+        border-radius: 5px;
+        margin: 0 10px;
+        display: inline-block;
     }
 
-    .fixed-navbar a.active, 
+    /* Alternating colors */
+    .nav-button.green {
+        color: #fff;
+        background-color: #28a745; /* Green */
+    }
+
+    .nav-button.blue {
+        color: #fff;
+        background-color: #007bff; /* Blue */
+    }
+
+    .nav-button.orange {
+        color: #fff;
+        background-color: #fd7e14; /* Orange */
+    }
+
     .fixed-navbar a:hover {
-        background-color: #DAA520; /* Slightly darker golden */
-        color: #fff; /* White text on hover */
-        transform: scale(1.1); /* Zoom-in effect */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Hover shadow */
-    }
-
-    .fixed-navbar a:focus {
-        outline: none; /* Remove default focus outline */
+        filter: brightness(1.2); /* Brighten on hover */
+        transform: scale(1.1); /* Slight zoom effect */
     }
 
     /* Fade-in and fade-out effect */

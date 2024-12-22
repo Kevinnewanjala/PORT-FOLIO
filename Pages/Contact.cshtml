@@ -1,5 +1,74 @@
 @* Contact Section *@
-<section id="contact" class="fade-in" style="padding: 60px 20px; text-align: center; background-color: #f4f4f4;">
-    <h2 style="font-size: 36px; margin-bottom: 20px;">Contact Me</h2>
-    <p style="font-size: 18px; color: #333;">If you'd like to work together or have any questions, feel free to reach out!</p>
+<section id="contact" class="fade-in" style="padding: 60px 20px; text-align: center; background-color: #f4f4f4; background-image: url('../resources/360_F_530960431_c8fPd3HansYvrSJ4fJxZqp9OhjQmYoll.jpg'); background-size: cover; background-position: center;">
+    <h2 style="font-size: 36px; margin-bottom: 20px;">Get in touch with me</h2>
+    <p style="font-size: 18px; color: #333; background-color: #4CAF50; color: white; font-size: 1.5rem; padding: 0.5rem 1rem; border-radius: 8px;">Feel free to drop me a message!</p>
+
+    <!-- Contact Form -->
+    <form id="contact-form" style="max-width: 600px; margin: 0 auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <div style="margin-bottom: 15px;">
+            <label for="fullName" style="font-size: 1.2rem;">Your Full Name</label>
+            <input type="text" name="fullName" id="fullName" required style="width: 100%; padding: 10px; margin: 5px 0;" />
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="email" style="font-size: 1.2rem;">Your Email</label>
+            <input type="email" name="email" id="email" required style="width: 100%; padding: 10px; margin: 5px 0;" />
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="message" style="font-size: 1.2rem;">Your Message</label>
+            <textarea name="message" id="message" required style="width: 100%; padding: 10px; margin: 5px 0; height: 100px;"></textarea>
+        </div>
+        <button type="submit" id="sendButton" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; transition: 0.3s;">Send</button>
+    </form>
+
+    @* Feedback Message *@
+    <div id="statusMessage" style="margin-top: 20px; color: #333; font-size: 1.2rem;"></div>
+
+    @* Footer Section *@
+    <footer style="margin-top: 2rem; background-color: #000; color: #fff; padding: 1rem; border-radius: 8px;">
+        <p class="mb-0" style="font-size: 1.4rem;">&copy; 2024 Kevin Wanjala. All rights reserved.</p>
+    </footer>
 </section>
+
+<script type="text/javascript">
+    // EmailJS integration
+    document.getElementById('contact-form').addEventListener('submit', function (event) {
+        event.preventDefault();  // Prevent default form submission
+
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        const sendButton = document.getElementById('sendButton');
+        
+        if (!fullName || !email || !message) {
+            document.getElementById('statusMessage').innerText = "Please fill in all fields.";
+            return;
+        }
+
+        // Show loading message
+        sendButton.innerText = "Sending...";
+        
+        // Send email using EmailJS
+        emailjs.send(
+            'service_uc2l81s',  // Your service ID
+            'template_20iq23c',  // Your template ID
+            {
+                fullName: fullName,
+                email: email,
+                message: message
+            },
+            'JaBesDEgCCXtlWCnY'  // Your public key
+        ).then(function(response) {
+            console.log('Success:', response);
+            document.getElementById('statusMessage').innerText = 'Message sent successfully!';
+            sendButton.innerText = "Sent!";
+            sendButton.disabled = true;
+
+            // Clear form
+            document.getElementById('contact-form').reset();
+        }, function(error) {
+            console.log('Error:', error);
+            document.getElementById('statusMessage').innerText = 'Failed to send message. Please try again.';
+            sendButton.innerText = "Send";
+        });
+    });
+</script>
